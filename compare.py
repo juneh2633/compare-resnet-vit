@@ -2,7 +2,8 @@ import os
 
 import torch
 from torchvision import models
-from utils import get_data_loaders, test_model
+from utils.data_load import data_load
+from utils.test_model import test_model
 
 base_dir = os.path.dirname(__file__)
 train_dir = os.path.join(base_dir, "../data/train")
@@ -12,7 +13,7 @@ test_dir = os.path.join(base_dir, "../data/test")
 batch_size = 32
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-_, test_loader = get_data_loaders(train_dir, test_dir, batch_size)
+_, test_loader = data_load(train_dir, test_dir, batch_size)
 
 
 def load_resnet50():
