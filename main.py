@@ -1,10 +1,11 @@
 from compare import compare_models
 from train.Resnet50 import resnet_train
 from train.ViT import vit_train
+from train.vit_not_finetuning import vit_test
 
 
 def main():
-
+    # vit_test()
     while 1:
         print("1. train ")
         print("2. compare ")
@@ -21,7 +22,6 @@ def main():
             elif x == 3:
                 vit_train()
                 resnet_train()
-
             break
         elif a == 2:
             compare_models()
