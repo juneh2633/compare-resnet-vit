@@ -6,8 +6,8 @@ from utils.data_load import data_load
 from utils.test_model import test_model
 
 base_dir = os.path.dirname(__file__)
-train_dir = os.path.join(base_dir, "../data/train")
-test_dir = os.path.join(base_dir, "../data/test")
+train_dir = os.path.join(base_dir, "./data/train")
+test_dir = os.path.join(base_dir, "./data/test")
 
 
 batch_size = 32
