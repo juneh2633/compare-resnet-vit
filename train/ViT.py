@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import models
+
 from utils.data_load import data_load
 from utils.test_model import test_model
 
@@ -16,7 +17,7 @@ def vit_train():
 
     num_classes = 10
     batch_size = 32
-    num_epochs = 25
+    num_epochs = 15
     learning_rate = 1e-5
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -25,14 +26,14 @@ def vit_train():
 
     model = models.vit_b_16(pretrained=True)
 
-    for param in model.parameters():
-        param.requires_grad = False
+    # for param in model.parameters():
+    #     param.requires_grad = False
 
     num_ftrs = model.heads.head.in_features
     model.heads.head = nn.Linear(num_ftrs, num_classes)
 
-    for param in model.heads.head.parameters():
-        param.requires_grad = True
+    # for param in model.heads.head.parameters():
+    #     param.requires_grad = True
 
     model = model.to(device)
 

@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import models
+
 from utils.data_load import data_load
 from utils.test_model import test_model
 
@@ -15,7 +16,7 @@ def resnet_train():
 
     num_classes = 10
     batch_size = 32
-    num_epochs = 25
+    num_epochs = 15
     learning_rate = 1e-5
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
