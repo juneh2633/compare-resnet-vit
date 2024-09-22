@@ -24,8 +24,16 @@ def vit_train():
     train_loader, test_loader = data_load(train_dir, test_dir, batch_size)
 
     model = models.vit_b_16(pretrained=True)
+
+    for param in model.parameters():
+        param.requires_grad = False
+
     num_ftrs = model.heads.head.in_features
     model.heads.head = nn.Linear(num_ftrs, num_classes)
+
+    for param in model.heads.head.parameters():
+        param.requires_grad = True
+
     model = model.to(device)
 
     criterion = nn.CrossEntropyLoss()
