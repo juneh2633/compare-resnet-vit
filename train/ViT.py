@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import models
+from torchvision.models import ViT_B_16_Weights
 
 from utils.data_load import data_load
 from utils.test_model import test_model
@@ -24,8 +25,8 @@ def vit_train():
 
     train_loader, test_loader = data_load(train_dir, test_dir, batch_size)
 
-    model = models.vit_b_16(pretrained=True)
-
+    # model = models.vit_b_16(pretrained=True)
+    model = models.vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1)
     # for param in model.parameters():
     #     param.requires_grad = False
 

@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import models
+from torchvision.models import ResNet50_Weights
 
 from utils.data_load import data_load
 from utils.test_model import test_model
@@ -23,8 +24,8 @@ def resnet_train():
 
     train_loader, test_loader = data_load(train_dir, test_dir, batch_size)
 
-    model = models.resnet50(pretrained=True)
-
+    # model = models.resnet50(pretrained=True)
+    model = models.resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
     num_ftrs = model.fc.in_features
     model.fc = nn.Linear(num_ftrs, num_classes)
     model = model.to(device)
