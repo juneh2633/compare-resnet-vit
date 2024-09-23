@@ -9,7 +9,9 @@ def data_load(train_dir, test_dir, batch_size=32):
                 transforms.RandomResizedCrop(224),
                 transforms.RandomHorizontalFlip(),
                 transforms.ToTensor(),
-                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                transforms.Normalize(
+                    [0.6482, 0.5635, 0.4257], [0.2171, 0.2315, 0.2546]
+                ),
             ]
         ),
         "test": transforms.Compose(
@@ -17,10 +19,13 @@ def data_load(train_dir, test_dir, batch_size=32):
                 transforms.Resize(256),
                 transforms.CenterCrop(224),
                 transforms.ToTensor(),
-                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+                transforms.Normalize(
+                    [0.6482, 0.5635, 0.4257], [0.2171, 0.2315, 0.2546]
+                ),
             ]
         ),
     }
+
     train_dataset = datasets.ImageFolder(train_dir, transform=data_transforms["train"])
     test_dataset = datasets.ImageFolder(test_dir, transform=data_transforms["test"])
 
